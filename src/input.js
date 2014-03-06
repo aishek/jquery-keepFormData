@@ -1,0 +1,71 @@
+(function(){
+  function Input(form, node, save_events) {
+    this.form = form;
+    this.node = node;
+    this.save_events = save_events || 'change paste keyup blur';
+
+    this.attach_save_value_handler();
+    this.load_value();
+
+    this.node.data('keepFormDataInstance', this);
+  };
+
+  Input.prototype.get_key = function(input) {
+    if (!this.key) {
+      this.key = this.form.key(this.node.attr('name'));
+    }
+
+    return this.key;
+  };
+
+  /**
+  * HINT: Using square brackets notation to aviod minification by closure compiler
+  */
+  Input.prototype['clear_value'] = function() {
+    localStorage.removeItem(this.get_key());
+  };
+
+  /**
+  * HINT: Using square brackets notation to aviod minification by closure compiler
+  */
+  Input.prototype['save_value'] = function() {
+    localStorage.setItem(this.get_key(), this.get_value());
+  };
+
+  /**
+  * HINT: Using square brackets notation to aviod minification by closure compiler
+  */
+  Input.prototype['load_value'] = function() {
+    var value = localStorage.getItem(this.get_key())
+    this.set_value(value);
+  };
+
+  /** @private */
+  Input.prototype.get_value = function() {
+    return this.node.val();
+  };
+
+  /** @private **/
+  Input.prototype.set_value = function(value) {
+    if (value === undefined || value === null) {
+      this.node.val(this.node.attr('value') || this.node.text());
+    }
+    else {
+      this.node.val(value);
+    }
+  };
+
+  /** @private */
+  Input.prototype.attach_save_value_handler = function() {
+    var self = this;
+    this.node.on(
+      this.save_events,
+      function() {
+        self.save_value();
+      }
+    );
+  };
+
+
+  $.keepFormData.Input = Input;
+})();
