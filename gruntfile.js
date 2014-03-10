@@ -18,14 +18,14 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: [
-          'src/namespace.js.source',
-          'src/util.js',
-          'src/input.js',
-          'src/select.js',
-          'src/checkbox.js',
-          'src/radio.js',
-          'src/form.js',
-          'src/plugin.js'
+          'src/namespace.js-source',
+          'src/util.js-source',
+          'src/input.js-source',
+          'src/select.js-source',
+          'src/checkbox.js-source',
+          'src/radio.js-source',
+          'src/form.js-source',
+          'src/plugin.js-source'
         ],
         dest: 'jquery.keepFormData.js'
       }
