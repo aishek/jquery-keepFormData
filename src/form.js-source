@@ -1,5 +1,12 @@
 (function(){
-  function Form(node, prefix) {
+  var ON_DATA_VALUE = {
+    '1': true,
+    'true': true,
+    'on': true,
+    'yes': true
+  };
+
+  function Form(node, prefix, clear_on_submit) {
     this.node = node;
     this.prefix = prefix;
 
@@ -7,7 +14,8 @@
 
     this.inputs = this.create_inputs(this.node);
 
-    if ( this.should_attach_clear_handler() ) {
+    this.clear_on_submit = this.clear_on_submit_value(clear_on_submit);
+    if ( this.clear_on_submit ) {
       this.attach_clear_handler();
     }
   }
@@ -17,16 +25,22 @@
   };
 
   /** @private */
-  Form.prototype.should_attach_clear_handler = function() {
-    var clear_on_submit = this.node.data('keep-form-data-clear-on-submit').toString().toLowerCase();
+  Form.prototype.clear_on_submit_value = function(default_value) {
+    var value = default_value;
 
-    return this.inputs.length > 0 &&
-      (
-        clear_on_submit === '1' ||
-        clear_on_submit === 'yes' ||
-        clear_on_submit === 'on' ||
-        clear_on_submit === 'true'
-      );
+    if ( this.inputs.length > 0 ) {
+      var data_value = this.node.data('keep-form-data-clear-on-submit');
+
+      if ( data_value !== undefined ) {
+        data_value = data_value.toString().toLowerCase();
+        value = (ON_DATA_VALUE[data_value] === true);
+      }
+    }
+    else {
+      value = false;
+    }
+
+    return value;
   };
 
   /** @private */

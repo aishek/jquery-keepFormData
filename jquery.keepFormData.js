@@ -113,10 +113,8 @@ $.keepFormData = {};
   /** @private **/
   Select.prototype.set_value = function(value) {
     if (value === undefined || value === null) {
-      var value_node = $('option[selected]', this.node),
-          value = value_node.attr('value') || value_node.text();
-
-      this.node.val(value);
+      var value_node = $('option[selected]', this.node);
+      value_node.prop('selected', 'selected');
     }
     else {
       this.node.val(value);
@@ -181,7 +179,14 @@ $.keepFormData = {};
 })();
 
 (function(){
-  function Form(node, prefix) {
+  var ON_DATA_VALUE = {
+    '1': true,
+    'true': true,
+    'on': true,
+    'yes': true
+  };
+
+  function Form(node, prefix, clear_on_submit) {
     this.node = node;
     this.prefix = prefix;
 
@@ -189,7 +194,8 @@ $.keepFormData = {};
 
     this.inputs = this.create_inputs(this.node);
 
-    if ( this.should_attach_clear_handler() ) {
+    this.clear_on_submit = this.clear_on_submit_value(clear_on_submit);
+    if ( this.clear_on_submit ) {
       this.attach_clear_handler();
     }
   }
@@ -199,16 +205,22 @@ $.keepFormData = {};
   };
 
   /** @private */
-  Form.prototype.should_attach_clear_handler = function() {
-    var clear_on_submit = this.node.data('keep-form-data-clear-on-submit').toString().toLowerCase();
+  Form.prototype.clear_on_submit_value = function(default_value) {
+    var value = default_value;
 
-    return this.inputs.length > 0 &&
-      (
-        clear_on_submit === '1' ||
-        clear_on_submit === 'yes' ||
-        clear_on_submit === 'on' ||
-        clear_on_submit === 'true'
-      );
+    if ( this.inputs.length > 0 ) {
+      var data_value = this.node.data('keep-form-data-clear-on-submit');
+
+      if ( data_value !== undefined ) {
+        data_value = data_value.toString().toLowerCase();
+        value = (ON_DATA_VALUE[data_value] === true);
+      }
+    }
+    else {
+      value = false;
+    }
+
+    return value;
   };
 
   /** @private */
@@ -308,7 +320,8 @@ $.keepFormData = {};
 (function($) {
   $.keepFormData.defaults = {
     storage_keys_prefix: 'keepFormData',
-    form_selector: 'form.keepFormData'
+    form_selector: 'form.keepFormData',
+    clear_on_submit: true
   };
   var defaults = $.keepFormData.defaults;
 
@@ -318,7 +331,7 @@ $.keepFormData = {};
 
         target = $(this);
 
-    var keep_form_data_instance = new $.keepFormData.Form(target, settings.storage_keys_prefix);
+    var keep_form_data_instance = new $.keepFormData.Form(target, settings.storage_keys_prefix, settings.clear_on_submit);
     target.data('keepFormDataInstance', keep_form_data_instance);
 
     return target;
