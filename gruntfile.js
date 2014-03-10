@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: [
-          'src/namespace.js',
+          'src/_namespace.js',
           'src/util.js',
           'src/input.js',
           'src/select.js',
