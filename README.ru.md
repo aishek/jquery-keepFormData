@@ -65,7 +65,7 @@ jquery-keepFormData автоматически применяется для ф�
 
 ## Лицензия
 
-jquery-keepFormData является бесплатным ПО с лицензией MIT, подробности в файле [LICENSE](https://github.com/jquery-keepFormData/LICENSE).
+jquery-keepFormData является бесплатным ПО с лицензией MIT, подробности в файле [LICENSE](https://github.com/aishek/jquery-keepFormData/blob/master/LICENSE).
 
 ## Автор
 
