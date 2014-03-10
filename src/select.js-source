@@ -8,10 +8,8 @@
   /** @private **/
   Select.prototype.set_value = function(value) {
     if (value === undefined || value === null) {
-      var value_node = $('option[selected]', this.node),
-          value = value_node.attr('value') || value_node.text();
-
-      this.node.val(value);
+      var value_node = $('option[selected]', this.node);
+      value_node.prop('selected', 'selected');
     }
     else {
       this.node.val(value);
