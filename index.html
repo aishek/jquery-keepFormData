@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>jquery.keepFormData – jQuery plugin for keep form's control states after page reload</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+    <script src="javascripts/jquery.keepFormData.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>jquery.keepFormData</h1>
+
+        <ul style="margin-bottom: 50px;">
+          <li><a href="https://github.com/aishek/jquery-keepFormData/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/aishek/jquery-keepFormData/releases/tag/v0.0.1">Download <strong>v0.0.1</strong></a></li>
+          <li><a href="https://github.com/aishek/jquery-keepFormData">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+
+      <section>
+        <h3>This form keeps it's controls state after page reloading</h3>
+
+        <ol>
+          <li>fill some fields;</li>
+          <li>reload page (notice, field values does not reset);</li>
+          <li>submit form to reset values.</li>
+        </ol>
+
+        <form class="keepFormData" id="test">
+          <p style="margin-bottom: 0.45em">
+            <label>
+              Text input
+              <br>
+              <input type="text" name="surname" style="width: 100%;" autofocus>
+            </label>
+          </p>
+
+          <p style="margin-bottom: 0.45em">
+            <label>
+              Textarea
+              <br>
+              <textarea name="111" style="width: 100%;" rows="5"></textarea>
+            </legend>
+          </p>
+
+          <p style="margin-bottom: 0.45em">
+            <label>
+              <input type="checkbox" name="surname_was_changed">
+              I'm fine, thanks!
+            </label>
+          </p>
+
+          <p style="margin-bottom: 0.45em">
+            <label>
+              Select
+              <br>
+              <select name="zxc">
+                <option value="first">first</option>
+                <option value="second">second</option>
+                <option value="third">third</option>
+              </select>
+            </label>
+          </p>
+
+          <p>
+            <label style="margin-right: 0.5em">
+              <input type="radio" name="gender" value="male">
+              first value
+            </label>
+            <label>
+              <input type="radio" name="gender" value="female">
+              second value
+            </label>
+          </p>
+
+          <input type="submit">
+        </form>
+
+      </section>
+
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/aishek">aishek</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
