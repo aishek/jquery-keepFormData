@@ -1,7 +1,7 @@
 (function(){
   function Select(form, node) {
     Select.__super__.constructor.call(this, form, node, 'change keyup blur');
-  };
+  }
 
   $.keepFormData.Util.extends(Select, $.keepFormData.Input);
 

@@ -3,15 +3,17 @@
 
   var __extends = function(child, parent) {
     for (var key in parent) {
-      if (__hasProp.call(parent, key)) child[key] = parent[key];
+      if (__hasProp.call(parent, key)) {
+        child[key] = parent[key];
+      }
     }
 
-    function ctor() {
+    function Constructor() {
       this.constructor = child;
     }
-    ctor.prototype = parent.prototype;
+    Constructor.prototype = parent.prototype;
 
-    child.prototype = new ctor();
+    child.prototype = new Constructor();
     child.__super__ = parent.prototype;
 
     return child;

@@ -1,7 +1,7 @@
 (function(){
   function CheckBox(form, node) {
     CheckBox.__super__.constructor.call(this, form, node, 'change keyup blur');
-  };
+  }
 
   $.keepFormData.Util.extends(CheckBox, $.keepFormData.Input);
 

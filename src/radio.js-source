@@ -1,9 +1,7 @@
 (function(){
-  var undefined;
-
   function Radio(form, node) {
     Radio.__super__.constructor.call(this, form, node, 'change keyup blur');
-  };
+  }
 
   $.keepFormData.Util.extends(Radio, $.keepFormData.Input);
 

@@ -10,15 +10,17 @@ $.keepFormData = {};
 
   var __extends = function(child, parent) {
     for (var key in parent) {
-      if (__hasProp.call(parent, key)) child[key] = parent[key];
+      if (__hasProp.call(parent, key)) {
+        child[key] = parent[key];
+      }
     }
 
-    function ctor() {
+    function Constructor() {
       this.constructor = child;
     }
-    ctor.prototype = parent.prototype;
+    Constructor.prototype = parent.prototype;
 
-    child.prototype = new ctor();
+    child.prototype = new Constructor();
     child.__super__ = parent.prototype;
 
     return child;
@@ -39,9 +41,9 @@ $.keepFormData = {};
     this.load_value();
 
     this.node.data('keepFormDataInstance', this);
-  };
+  }
 
-  Input.prototype.get_key = function(input) {
+  Input.prototype.get_key = function() {
     if (!this.key) {
       this.key = this.form.key(this.node.attr('name'));
     }
@@ -67,7 +69,7 @@ $.keepFormData = {};
   * HINT: Using square brackets notation to aviod minification by closure compiler
   */
   Input.prototype['load_value'] = function() {
-    var value = localStorage.getItem(this.get_key())
+    var value = localStorage.getItem(this.get_key());
     this.set_value(value);
   };
 
@@ -104,7 +106,7 @@ $.keepFormData = {};
 (function(){
   function Select(form, node) {
     Select.__super__.constructor.call(this, form, node, 'change keyup blur');
-  };
+  }
 
   $.keepFormData.Util.extends(Select, $.keepFormData.Input);
 
@@ -128,7 +130,7 @@ $.keepFormData = {};
 (function(){
   function CheckBox(form, node) {
     CheckBox.__super__.constructor.call(this, form, node, 'change keyup blur');
-  };
+  }
 
   $.keepFormData.Util.extends(CheckBox, $.keepFormData.Input);
 
@@ -158,11 +160,9 @@ $.keepFormData = {};
 })();
 
 (function(){
-  var undefined;
-
   function Radio(form, node) {
     Radio.__super__.constructor.call(this, form, node, 'change keyup blur');
-  };
+  }
 
   $.keepFormData.Util.extends(Radio, $.keepFormData.Input);
 
@@ -192,7 +192,7 @@ $.keepFormData = {};
     if ( this.should_attach_clear_handler() ) {
       this.attach_clear_handler();
     }
-  };
+  }
 
   Form.prototype.key = function(name) {
     return this.prefix + '[' + this.name + '][' + name + ']';

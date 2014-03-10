@@ -10,7 +10,7 @@
     if ( this.should_attach_clear_handler() ) {
       this.attach_clear_handler();
     }
-  };
+  }
 
   Form.prototype.key = function(name) {
     return this.prefix + '[' + this.name + '][' + name + ']';

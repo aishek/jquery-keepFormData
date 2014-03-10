@@ -8,9 +8,9 @@
     this.load_value();
 
     this.node.data('keepFormDataInstance', this);
-  };
+  }
 
-  Input.prototype.get_key = function(input) {
+  Input.prototype.get_key = function() {
     if (!this.key) {
       this.key = this.form.key(this.node.attr('name'));
     }
@@ -36,7 +36,7 @@
   * HINT: Using square brackets notation to aviod minification by closure compiler
   */
   Input.prototype['load_value'] = function() {
-    var value = localStorage.getItem(this.get_key())
+    var value = localStorage.getItem(this.get_key());
     this.set_value(value);
   };
 
