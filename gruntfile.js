@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       },
       js: {
         // Все *.js файлы в папке src
-        files: 'src/*.js',
+        files: 'src/*.js-source',
         tasks: ['concat', 'closure-compiler']
       }
     },
