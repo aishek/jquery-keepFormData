@@ -3,7 +3,7 @@
 jquery-keepFormData
 ===================
 
-[Demo](http://aishek.github.io/jquery-keepFormData/) | [v0.0.1 – Latest Release](https://github.com/aishek/jquery-keepFormData/releases/tag/v0.0.1)
+[Demo](http://aishek.github.io/jquery-keepFormData/) | [v0.0.2 – Latest Release](https://github.com/aishek/jquery-keepFormData/releases/tag/0.0.2)
 
 [README по-русски](https://github.com/aishek/jquery-keepFormData/blob/master/README.ru.md)
 

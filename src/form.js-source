@@ -114,6 +114,9 @@
           input = new $.keepFormData.Radio(this, node);
           break;
 
+        case 'hidden':
+          break;
+
         default:
           if (node.is('select')) {
             input = new $.keepFormData.Select(this, node);
