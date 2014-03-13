@@ -22,7 +22,7 @@
 
         <ul style="margin-bottom: 50px;">
           <li><a href="https://github.com/aishek/jquery-keepFormData/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/aishek/jquery-keepFormData/releases/tag/v0.0.1">Download <strong>v0.0.1</strong></a></li>
+          <li><a href="https://github.com/aishek/jquery-keepFormData/releases/tag/0.0.2">Download <strong>v0.0.2</strong></a></li>
           <li><a href="https://github.com/aishek/jquery-keepFormData">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
@@ -38,49 +38,38 @@
 
         <form class="keepFormData" id="test">
           <p style="margin-bottom: 0.45em">
-            <label>
-              Text input
-              <br>
-              <input type="text" name="surname" style="width: 100%;" autofocus>
-            </label>
+            <label for="text_input">Text input</label>
+            <br>
+            <input type="text" name="surname" style="width: 100%;" id="text_input" autofocus>
           </p>
 
           <p style="margin-bottom: 0.45em">
-            <label>
-              Textarea
-              <br>
-              <textarea name="111" style="width: 100%;" rows="5"></textarea>
-            </legend>
+            <label for="textarea">Textarea</legend>
+            <br>
+            <textarea name="111" style="width: 100%;" rows="5" id="textarea"></textarea>
           </p>
 
           <p style="margin-bottom: 0.45em">
-            <label>
-              <input type="checkbox" name="surname_was_changed">
-              I'm fine, thanks!
-            </label>
+            <input type="checkbox" name="surname_was_changed" id="checkbox">
+            <label for="checkbox"> I'm fine, thanks!</label>
           </p>
 
           <p style="margin-bottom: 0.45em">
-            <label>
-              Select
-              <br>
-              <select name="zxc">
-                <option value="first">first</option>
-                <option value="second">second</option>
-                <option value="third">third</option>
-              </select>
-            </label>
+            <label for="select">Select</label>
+            <br>
+            <select name="zxc" id="select">
+              <option value="first">first</option>
+              <option value="second">second</option>
+              <option value="third">third</option>
+            </select>
           </p>
 
           <p>
-            <label style="margin-right: 0.5em">
-              <input type="radio" name="gender" value="male">
-              first value
-            </label>
-            <label>
-              <input type="radio" name="gender" value="female">
-              second value
-            </label>
+            <input type="radio" name="gender" value="male" id="radio1">
+            <label for="radio1" style="margin-right: 0.5em"> first value</label>
+
+            <input type="radio" name="gender" value="female" id="radio2">
+            <label for="radio2"> second value</label>
           </p>
 
           <input type="submit">
