@@ -2,7 +2,8 @@
   $.keepFormData.defaults = {
     storage_keys_prefix: 'keepFormData',
     form_selector: 'form.keepFormData',
-    clear_on_submit: true
+    clear_on_submit: true,
+    use_session_storage: false
   };
   var defaults = $.keepFormData.defaults;
 
@@ -12,7 +13,7 @@
 
         target = $(this);
 
-    var keep_form_data_instance = new $.keepFormData.Form(target, settings.storage_keys_prefix, settings.clear_on_submit);
+    var keep_form_data_instance = new $.keepFormData.Form(target, settings.storage_keys_prefix, settings.clear_on_submit, settings.use_session_storage);
     target.data('keepFormDataInstance', keep_form_data_instance);
 
     return target;
