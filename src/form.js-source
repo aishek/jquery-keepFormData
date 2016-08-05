@@ -6,9 +6,10 @@
     'yes': true
   };
 
-  function Form(node, prefix, clear_on_submit) {
+  function Form(node, prefix, clear_on_submit, use_session_storage) {
     this.node = node;
     this.prefix = prefix;
+    this.use_session_storage = this.use_session_storage_value(use_session_storage);
 
     this.name = this.guess_name(this.node);
 
@@ -38,6 +39,19 @@
     }
     else {
       value = false;
+    }
+
+    return value;
+  };
+  
+  /** @private */
+  Form.prototype.use_session_storage_value = function(default_value) {
+    var value = default_value;
+    var data_value = this.node.data('keep-form-data-use-session-storage');
+
+    if ( data_value !== undefined ) {
+      data_value = data_value.toString().toLowerCase();
+      value = (ON_DATA_VALUE[data_value] === true);
     }
 
     return value;
